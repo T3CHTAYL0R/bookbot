@@ -1,22 +1,32 @@
 import os
 
 script_dir = os.path.dirname(__file__)
-
 path_to_file = os.path.join(script_dir, 'books/frankenstein.txt')
 
 def main():
     with open(path_to_file) as f:
         file_contents = f.read()
 
-    print(file_contents)
-
     word_count = count_words(file_contents)
-    print(f"Number of words in the file: {word_count}")
-
+    
     char_counts, total_chars = count_characters(file_contents)
-    print("Character counts (ignoring case and removing duplicates):")
-    print(char_counts)
-    print(f"Total number of charcters (excluding non-alphabetic): {total_chars}")
+
+    print("---------- Text Analysis Report ----------")
+    print(f"File: {path_to_file}")
+    print("")
+
+    print("----- Word Count -----")
+    print(f"Number of words: {word_count}")
+    print("")
+
+    print("----- Character Counts (Ignoring Case and Removing Duplicates) -----")
+    for char, count in char_counts.items():
+        print(f"{char}: {count}")
+
+    print("")
+    print(f"Total number of characters (excluding non-alphabetic): {total_chars}")
+    print("-------------------------------------------------")
+    
 
 def count_words(text):
 

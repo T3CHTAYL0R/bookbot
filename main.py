@@ -34,7 +34,8 @@ def count_characters(text):
                 char_counts[char] = 1
             else:
                 char_counts[char] += 1
+    total_chars = sum(char_counts.values())
 
-    return char_counts
+    return char_counts, total_chars
 
 main()
